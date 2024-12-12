@@ -46,6 +46,7 @@ fs.readFile('Links.txt', 'utf8', async (err, data) => {
 
     try {
       // Scrape data from the page
+	  await page.waitForSelector('[data-qa-target="ProviderDisplayName"]', { visible: true });
       const providerDisplayName = await page.$eval('[data-qa-target="ProviderDisplayName"]', el => el.innerText.trim());
       const providerAddress = await page.$eval('[data-qa-target="provider-office-address"]', el => el.innerText.trim());
       const category = await page.$eval('.summary-standard-specialty-mobile', el => el.innerText.trim());
