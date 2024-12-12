@@ -18,7 +18,7 @@ fs.readFile('Links.txt', 'utf8', async (err, data) => {
   const extractedData = [];
 
   // Launch Puppeteer browser
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: false });
   const page = await browser.newPage();
 
   // Check if the Excel file exists
